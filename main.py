@@ -1,14 +1,13 @@
 import sys
 from PyQt5.QtWidgets import QWidget, QMainWindow, QApplication, QPushButton
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5 import uic
 from random import randint
 from UI import Ui_MainWindow
 
 class Example(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.flag = False
         self.pushButton.clicked.connect(self.drawf)
         self.show()
@@ -26,7 +25,7 @@ class Example(QMainWindow, Ui_MainWindow):
 
     def drawFlag(self,qp):
         self.size = randint(20, 60)
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         qp.drawEllipse(randint(0, (540 - self.size)), randint(0, (600 - self.size)), self.size, self.size)
 
 
